@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Online MQTT Web Client</title>
+
+    <!-- Added the Bootstrap CDN -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>     
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <!-- local -->
+    <!-- <script src="scripts/index.css"></script> -->
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+       <center><h2 class="pt-3" style="background-color: skyblue;">MQTT over Web Socket</h2></center> 
+        <!-- row1 -->
+        <div class="row">
+            <!-- col1 -->
+            <div class="col">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <div class="bg-primary-text-white h4">
+                            Broker
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <label for="broker_input" class="font-weight-bold"> Address:</label>
+                        <input type="text" class="form-control" id="broker_input" value="wss://test.mosquitto.org:8081/mqtt"><br>
+                        <button id="connect_btn" class="btn btn-info" >Connect</button>
+                       
+                        <br>
+                        <br>
+                        <label for="status" class="font-weight-bold">Status:</label>
+                        <br>
+                        <input type="text "id="display-status" class="alert alert-primary" value=" Press Connect">
+                           
+                      
+                    </div>
+
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header alert-danger">
+                        Incoming Messages
+                    </div>
+                    <table class="text-center table table-hover">
+                        <thead class="table">
+                            <tr>
+                                <th>Topic</th>
+                                <th>Payload</th>
+                                <th>Timestamp</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbl-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- col2 -->
+            <div class="col">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <div class="text-left h4">
+                            Publish
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <label for="publish-input" class="font-weight-bold">Topic:</label>
+                        <input type="text" class="form-control" id="publish-input" value="">
+                        <label for="publish-input-payload" class="font-weight-bold">Payload:</label>
+                        <input type="text" class="form-control" id="publish-input-payload" value="">
+                        <br>
+                        <button class="btn btn-info" id="publish-button" >Publish</button>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header alert-success">
+                        Published Messages
+                    </div>
+                    <table class="text-center table table-hover">
+                        <thead class="table">
+                            <tr>
+                                <th>Topic</th>
+                                <th>Payload</th>
+                                <th>Timestamp</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbl-body-pub">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- col3 -->
+            <div class="col">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <div class="text-left h4">
+                            Subscribe
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <label for="subscribe-input" class="font-weight-bold">Topic:</label>
+                        <input type="text" class="form-control" id="subscribe-input" value="">
+                        <br>
+                        <button class="btn btn-info" id="subscribe-button" >Subscribe</button>
+                        
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header alert-warning">
+                        Subscribed Messages
+                    </div>
+                    <table class="text-center table table-hover">
+                        <thead class="table">
+                            <tr>
+                                <th>Topic</th>
+                                <th>Timestamp</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbl-body-sub">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+</body>
+<script src="browser_mqtt.js"></script>
+<script src="mainjs_tomalon.js"></script>
+
+</html>
